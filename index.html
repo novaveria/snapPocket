@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SnapPocket — Snap it. Pocket the moment.</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- ICONS -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=shopping_bag"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ===================== NAVBAR ===================== -->
+    <nav>
+      <div class="nav-logo">
+        <div class="dot"></div>
+        SnapPocket
+      </div>
+      <div class="nav-links">
+        <!-- <a href="#home" class="active">Home</a>
+        <a href="#shop">Shop</a>
+        <a href="#about">About</a>
+        <a href="#order">Order</a> -->
+      </div>
+      <div class="nav-right">
+        <button class="nav-cart-btn" onclick="openCart()">
+          <span class="material-symbols-outlined"> shopping_bag </span>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+        <button class="nav-cta" onclick="scrollToShop()">Pesan sekarang</button>
+        <button
+          class="hamburger"
+          id="hamburger"
+          onclick="toggleMenu()"
+          aria-label="Menu"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#home" onclick="closeMenu()">Home</a>
+      <a href="#shop" onclick="closeMenu()">Shop</a>
+      <a href="#about" onclick="closeMenu()">About</a>
+      <a href="#order" onclick="closeMenu()">Order</a>
+      <button
+        class="btn-primary"
+        style="width: fit-content"
+        onclick="
+          closeMenu();
+          scrollToShop();
+        "
+      >
+        Pesan sekarang
+      </button>
+    </div>
+
+    <!-- =====================================================================
+       HERO HEADER BANNER  ← TAMBAHAN BARU (baris ini s/d penutup section)
+       Referensi: hero.png — banner pengantar playful di atas hero utama
+       Posisi: tepat setelah mobile-menu, SEBELUM section#home
+  ====================================================================== -->
+    <div class="hero-header-banner" id="hero-banner">
+      <!-- Dekorasi floating emoji -->
+      <span
+        class="hhb-deco"
+        style="top: 20px; left: 14%; animation: float1 3s ease-in-out infinite"
+        >🌸</span
+      >
+      <span
+        class="hhb-deco"
+        style="
+          top: 16px;
+          right: 14%;
+          animation: float2 3.5s ease-in-out infinite;
+        "
+        >⭐</span
+      >
+      <span
+        class="hhb-deco"
+        style="
+          bottom: 24px;
+          right: 18%;
+          animation: float1 4s ease-in-out infinite;
+        "
+        >💫</span
+      >
+
+      <!-- Badge non-alkohol / spinning badge -->
+      <div class="hhb-badge-nona">SNAP<br />POCKET<br />✦ ID ✦</div>
+
+      <!-- Teks pre-headline -->
+      <p class="hhb-pre">snap it. pocket it. keep it forever.</p>
+
+      <!-- Judul utama dengan highlight warna -->
+      <h2 class="hhb-title">
+        DAPATKAN <span class="hhb-hl-orange">SNAPPOCKET</span><br />
+        <span class="hhb-hl-purple">POLAROID CUSTOM</span> UNTUK<br />
+        EVENT KAMU
+      </h2>
+
+      <!-- Tombol CTA banner -->
+      <button class="hhb-cta" onclick="scrollToShop()">
+        pesan sekarang 📷
+      </button>
+    </div>
+    <!-- ===================== HERO (LAMA — tetap di bawah banner) ===================== -->
+    <!-- section#home tidak lagi butuh margin-top 64px karena ada banner di atas -->
+    <section id="home" style="padding-top: 0">
+      <!-- <div class="hero-inner">
+        <div class="hero-content">
+          <div class="hero-tag">
+            <span>⭐</span> Kelompok 2 · Bisnis Digital
+          </div>
+          <h1 class="hero-title">
+            Snap it. <span class="accent">Pocket</span><br />the moment.
+          </h1>
+          <p class="hero-desc">
+            Polaroid foto real-time, dibingkai case bening, digantung di rantai
+            custom. Pilih sticker, pilih beads — jadikan kenangan yang selalu
+            nemenin kemana pun.
+          </p>
+          <div class="hero-btns">
+            <button class="btn-primary" onclick="scrollToShop()">
+              Lihat semua produk →
+            </button>
+            <button class="btn-outline" onclick="scrollToShop()">
+              Pesan sekarang
+            </button>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <div class="stat-num">4</div>
+              <div class="stat-label">varian produk</div>
+            </div>
+            <div>
+              <div class="stat-num">~5 mnt</div>
+              <div class="stat-label">cetak instan</div>
+            </div>
+            <div>
+              <div class="stat-num">100%</div>
+              <div class="stat-label">custom kamu</div>
+            </div>
+          </div>
+        </div> -->
+
+      <!-- ================================================================
+           HERO VISUAL: Diganti dari placeholder menjadi polaroid gallery
+           Referensi: tampilanProduk.png — foto bertumpuk acak miring
+           (baris ini s/d penutup div.hero-visual adalah TAMBAHAN BARU)
+      ================================================================ -->
+      <div class="hero-visual">
+        <div class="product-gallery">
+          <!-- Dot dekorasi kuning (seperti di tampilanProduk.png) -->
+          <div
+            class="gallery-dot"
+            style="width: 22px; height: 22px; top: 12px; left: 2%"
+          ></div>
+          <div
+            class="gallery-dot"
+            style="width: 16px; height: 16px; top: 55%; left: 0%"
+          ></div>
+          <div
+            class="gallery-dot"
+            style="width: 20px; height: 20px; bottom: 8px; right: 12%"
+          ></div>
+          <div
+            class="gallery-dot"
+            style="width: 14px; height: 14px; top: 20px; right: 30%"
+          ></div>
+
+          <!-- Polaroid 1 — produk Standard -->
+          <div class="polaroid pol-1">
+            <div class="polaroid-photo" style="background: #f0d8c8">
+              <img src="img/product-standard.jpg" alt="Standard" />
+            </div>
+            <div class="polaroid-label">STANDARD</div>
+          </div>
+
+          <!-- Polaroid 2 — produk Standard + Sticker -->
+          <div class="polaroid pol-2">
+            <div class="polaroid-photo">
+              <img src="img/product-sticker.jpg" alt="Sticker" />
+            </div>
+            <div class="polaroid-label">+ STICKER</div>
+          </div>
+
+          <!-- Polaroid 3 — produk Standard + Beads -->
+          <div class="polaroid pol-3">
+            <div class="polaroid-photo">
+              <img src="img/product-beads.jpg" alt="Beads" />
+            </div>
+            <div class="polaroid-label">+ BEADS</div>
+          </div>
+
+          <!-- Polaroid 4 — produk Premium All In -->
+          <div class="polaroid pol-4">
+            <div class="polaroid-photo">
+              <img src="img/product-premium.jpg" alt="Premium" />
+            </div>
+            <div class="polaroid-label">PREMIUM</div>
+          </div>
+
+          <!-- Polaroid 5 — moment foto (center) -->
+          <div class="polaroid pol-5">
+            <div class="polaroid-photo">
+              <img src="img/about-shot.jpg" alt="Moment" />
+            </div>
+            <div class="polaroid-label">smile!</div>
+          </div>
+        </div>
+
+        <!-- Badge harga tetap dipertahankan -->
+        <!-- <div class="hero-price-badge">MULAI<br />Rp26.022</div>
+        </div> -->
+        <!-- ================================================================ -->
+      </div>
+    </section>
+
+    <!-- ===================== MARQUEE ===================== -->
+    <div class="marquee-wrap">
+      <div class="marquee-track" id="marqueeTrack">
+        <span>Real-time photo</span><span class="star">★</span>
+        <span>Custom chain</span><span class="star">★</span>
+        <span>Y2K stickers</span><span class="star">★</span>
+        <span>Manik-manik</span><span class="star">★</span>
+        <span>Iconic moment</span><span class="star">★</span>
+        <span>Real-time photo</span><span class="star">★</span>
+        <span>Custom chain</span><span class="star">★</span>
+        <span>Y2K stickers</span><span class="star">★</span>
+        <span>Manik-manik</span><span class="star">★</span>
+        <span>Iconic moment</span><span class="star">★</span>
+        <!-- duplicate for seamless loop -->
+        <span>Real-time photo</span><span class="star">★</span>
+        <span>Custom chain</span><span class="star">★</span>
+        <span>Y2K stickers</span><span class="star">★</span>
+        <span>Manik-manik</span><span class="star">★</span>
+        <span>Iconic moment</span><span class="star">★</span>
+        <span>Real-time photo</span><span class="star">★</span>
+        <span>Custom chain</span><span class="star">★</span>
+        <span>Y2K stickers</span><span class="star">★</span>
+        <span>Manik-manik</span><span class="star">★</span>
+        <span>Iconic moment</span><span class="star">★</span>
+      </div>
+    </div>
+
+    <!-- ===================== SHOP ===================== -->
+    <section id="shop" style="padding-top: 80px; padding-bottom: 80px">
+      <div style="max-width: 1200px; margin: 0 auto; padding: 0 5%">
+        <div class="shop-header reveal">
+          <div>
+            <div class="section-label">THE SHOP</div>
+            <h2 class="section-title">
+              Pick your <span class="accent">pocket</span>
+            </h2>
+          </div>
+          <a href="#shop">Lihat semua →</a>
+        </div>
+        <div class="product-grid" id="productGrid">
+          <!-- Cards injected by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== HOW IT WORKS ===================== -->
+    <section id="about" style="padding: 40px 5% 80px">
+      <div class="how-box reveal">
+        <div>
+          <div class="how-label">HOW IT WORKS</div>
+          <h2 class="how-title">Tiga langkah,<br />satu kenangan.</h2>
+        </div>
+        <div class="how-steps">
+          <div class="step">
+            <div class="step-num">01</div>
+            <div>
+              <div class="step-title">Jepret real-time</div>
+              <div class="step-desc">
+                Tim SnapPocket bawa polaroid ke event kamu. Pose. Jepret. Tunggu
+                beberapa detik.
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div>
+              <div class="step-title">Custom kamu</div>
+              <div class="step-desc">
+                Pilih case, tambah sticker, atau rangkai beads dengan inisial
+                nama.
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div>
+              <div class="step-title">Sematkan</div>
+              <div class="step-desc">
+                Pasang di tas, kunci, atau lanyard. Kenangan yang selalu kamu
+                bawa.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CTA ===================== -->
+    <section id="order" class="cta-section reveal">
+      <h2 class="cta-title">
+        Ada event kampus,<br /><span class="highlight">ulang tahun</span>, atau
+        gathering?
+      </h2>
+      <p class="cta-sub">
+        Mulai dari Rp26.022. Cocok untuk mahasiswa baru, family kecil, atau
+        hadiah ikonik.
+      </p>
+      <div class="cta-btns">
+        <button
+          class="btn-primary btn-teal"
+          onclick="window.open('https://instagram.com/snappocket.id', '_blank')"
+        >
+          Chat kami di IG
+        </button>
+        <button class="btn-outline" onclick="scrollToShop()">
+          Telusuri produk
+        </button>
+      </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer>
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <div
+              class="dot"
+              style="
+                width: 28px;
+                height: 28px;
+                border-radius: 50%;
+                background: var(--red);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+              "
+            >
+              <div
+                style="
+                  width: 10px;
+                  height: 10px;
+                  border-radius: 50%;
+                  background: #fff;
+                "
+              ></div>
+            </div>
+            <span
+              style="
+                font-family: var(--font-head);
+                font-weight: 700;
+                font-size: 1.1rem;
+              "
+              >SnapPocket</span
+            >
+          </div>
+          <p class="footer-tagline">
+            Real-time polaroid + custom chain. Memori instan yang selalu
+            mendampingi keseharianmu.
+          </p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Menu</div>
+          <a href="#home">Home</a>
+          <a href="#shop">Shop</a>
+          <a href="#about">About</a>
+          <a href="#order">Order</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Say hi</div>
+          <a href="https://instagram.com/snappocket.id" target="_blank"
+            >Instagram: @snappocket.id</a
+          >
+          <a href="https://tiktok.com/@snappocket.id" target="_blank"
+            >TikTok: @snappocket.id</a
+          >
+          <a href="mailto:snappocket.uj@gmail.com"
+            >Email: snappocket.uj@gmail.com</a
+          >
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2026 SnapPocket — Kelompok 2 Bisnis Digital
+      </div>
+    </footer>
+
+    <!-- ===================== ADD-TO-CART MODAL ===================== -->
+    <div
+      class="modal-overlay"
+      id="productModal"
+      onclick="handleModalOverlayClick(event)"
+    >
+      <div class="modal-sheet" style="position: relative">
+        <button class="close-modal" onclick="closeModal()">✕</button>
+        <div class="modal-img" id="modalImg">📸</div>
+        <div class="modal-body">
+          <div class="modal-header">
+            <div class="modal-product-name" id="modalName">Nama Produk</div>
+            <div class="modal-price" id="modalPrice">Rp0</div>
+          </div>
+          <div class="modal-desc" id="modalDesc">Deskripsi produk</div>
+
+          <!-- Temperature selector -->
+          <div class="modal-section" id="tempSection">
+            <div class="modal-section-title">Rantai <span>Pilih 1</span></div>
+            <div class="option-grid" id="chainOptions">
+              <button
+                class="option-btn selected"
+                data-group="chain"
+                data-val="Silver"
+                onclick="selectOption(this, 'chain')"
+              >
+                <span class="option-icon">🔗</span>Silver
+              </button>
+              <button
+                class="option-btn"
+                data-group="chain"
+                data-val="Gold"
+                onclick="selectOption(this, 'chain')"
+              >
+                <span class="option-icon">✨</span>Gold
+              </button>
+            </div>
+          </div>
+
+          <!-- Size selector (for products with beads) -->
+          <div class="modal-section" id="beadsSection" style="display: none">
+            <div class="modal-section-title">
+              Warna Beads <span>Pilih 1</span>
+            </div>
+            <div class="option-grid">
+              <button
+                class="option-btn selected"
+                data-group="beads"
+                data-val="Colorful"
+                onclick="selectOption(this, 'beads')"
+              >
+                <span class="option-icon">🌈</span>Colorful
+              </button>
+              <button
+                class="option-btn"
+                data-group="beads"
+                data-val="Pastel"
+                onclick="selectOption(this, 'beads')"
+              >
+                <span class="option-icon">🌸</span>Pastel
+              </button>
+            </div>
+          </div>
+
+          <!-- Sticker section (for products with sticker) -->
+          <div class="modal-section" id="stickerSection" style="display: none">
+            <div class="modal-section-title">
+              Tema Sticker <span>Pilih 1</span>
+            </div>
+            <div class="option-grid">
+              <button
+                class="option-btn selected"
+                data-group="sticker"
+                data-val="Y2K"
+                onclick="selectOption(this, 'sticker')"
+              >
+                <span class="option-icon">💫</span>Y2K
+              </button>
+              <button
+                class="option-btn"
+                data-group="sticker"
+                data-val="Cute"
+                onclick="selectOption(this, 'sticker')"
+              >
+                <span class="option-icon">🐣</span>Cute
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <div class="qty-ctrl">
+            <button class="qty-btn" onclick="changeQty(-1)">−</button>
+            <span class="qty-num" id="qtyNum">1</span>
+            <button class="qty-btn" onclick="changeQty(1)">+</button>
+          </div>
+          <button class="add-btn" id="addBtn" onclick="addToCart()">
+            + Keranjang Rp0
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== CART SIDEBAR ===================== -->
+    <div
+      class="cart-overlay"
+      id="cartOverlay"
+      onclick="handleCartOverlayClick(event)"
+    >
+      <div class="cart-panel">
+        <div class="cart-head">
+          <h2>🛍 Keranjang</h2>
+          <button class="cart-close" onclick="closeCart()">✕</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+          <div class="cart-empty">Keranjang masih kosong 🛒</div>
+        </div>
+        <div class="cart-foot">
+          <div class="cart-total-row">
+            <span>Total</span>
+            <span id="cartTotal">Rp0</span>
+          </div>
+          <button class="checkout-btn" onclick="openQRModal()">
+            Bayar Sekarang 💳
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== QR CODE MODAL ===================== -->
+    <div
+      class="qr-overlay"
+      id="qrOverlay"
+      onclick="handleQROverlayClick(event)"
+    >
+      <div class="qr-box">
+        <div class="qr-title">Pembayaran 🎉</div>
+        <div class="qr-sub">Scan QR di bawah untuk transfer</div>
+        <div class="qr-placeholder" id="qrImg">
+          <img
+            src="img/QRIS.png"
+            alt="QRIS"
+            style="
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+              border-radius: 8px;
+            "
+          />
+        </div>
+        <div class="qr-amount" id="qrAmount">Rp0</div>
+        <div class="qr-note">
+          Setelah transfer, klik tombol di bawah untuk konfirmasi via WhatsApp
+        </div>
+        <div class="qr-actions">
+          <button class="qr-confirm-btn" onclick="confirmPayment()">
+            Konfirmasi Pembayaran 💬
+          </button>
+          <button class="qr-close-btn" onclick="closeQRModal()">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="app.js"></script>
+</html>
