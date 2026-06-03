@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo Interaktif — SnapPocket</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="demo.css" />
+  </head>
+  <body>
+    <!-- ===================== NAVBAR ===================== -->
+    <nav>
+      <a href="index.html" class="nav-logo" style="text-decoration:none;">
+        <img src="img/logo_new_bg.png" alt="SnapPocket Logo" class="nav-logo-img" />
+        SnapPocket
+      </a>
+      <div class="nav-links"></div>
+      <div class="nav-right">
+        <a href="index.html" class="nav-back-btn">← Kembali</a>
+      </div>
+    </nav>
+
+    <!-- ===================== DEMO HERO ===================== -->
+    <div class="demo-hero">
+      <span class="hhb-deco" style="top:24px;left:10%;animation:float1 3s ease-in-out infinite;">🌸</span>
+      <span class="hhb-deco" style="top:20px;right:10%;animation:float2 3.5s ease-in-out infinite;">📷</span>
+      <span class="hhb-deco" style="bottom:28px;right:16%;animation:float1 4s ease-in-out infinite;">✨</span>
+
+      <div class="demo-hero-badge">✦ DEMO INTERAKTIF ✦</div>
+      <h1 class="demo-hero-title">
+        Coba Dulu,<br /><span class="accent">Baru Pesan!</span>
+      </h1>
+      <p class="demo-hero-sub">
+        Foto langsung dari kamera, pilih gaya keychain kamu, lihat hasilnya
+        sebelum pesan.
+      </p>
+
+      <!-- Step indicator -->
+      <div class="demo-steps">
+        <div class="demo-step active" id="step1-ind">
+          <div class="demo-step-num">01</div>
+          <div class="demo-step-label">Ambil Foto</div>
+        </div>
+        <div class="demo-step-line"></div>
+        <div class="demo-step" id="step2-ind">
+          <div class="demo-step-num">02</div>
+          <div class="demo-step-label">Pilih Gaya</div>
+        </div>
+        <div class="demo-step-line"></div>
+        <div class="demo-step" id="step3-ind">
+          <div class="demo-step-num">03</div>
+          <div class="demo-step-label">Pesan!</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== STEP 1 — CAMERA ===================== -->
+    <section class="demo-section" id="step1">
+      <div class="demo-camera-wrapper">
+
+        <!-- Permission / Start state -->
+        <div class="camera-permission" id="permissionState">
+          <div class="cam-perm-icon">📷</div>
+          <h3>Siap Difoto?</h3>
+          <p>Kami butuh izin kamera untuk mengambil foto kamu secara real-time.</p>
+          <button class="btn-primary" onclick="startCamera()">
+            Aktifkan Kamera 📸
+          </button>
+        </div>
+
+        <!-- Camera live view -->
+        <div class="camera-view" id="cameraView" style="display:none;">
+          <video id="videoEl" autoplay playsinline muted></video>
+          <div class="camera-ui">
+            <div class="camera-frame-ring"></div>
+            <p class="camera-hint">Posisikan wajah di sini</p>
+          </div>
+          <div class="camera-controls">
+            <button class="capture-btn" id="captureBtn" onclick="capturePhoto()" title="Ambil foto">
+              <div class="capture-inner"></div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Error state -->
+        <div class="camera-error" id="errorState" style="display:none;">
+          <div class="cam-perm-icon">😔</div>
+          <h3>Kamera Tidak Bisa Diakses</h3>
+          <p>Pastikan izin kamera diberikan di browser kamu, lalu muat ulang halaman.</p>
+          <button class="btn-primary" onclick="location.reload()">Muat Ulang</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== STEP 2 — CUSTOMIZE ===================== -->
+    <section class="demo-section demo-customize" id="step2" style="display:none;">
+      <div class="demo-customize-wrapper">
+
+        <!-- ── LEFT: Keychain Mockup Preview ── -->
+        <div class="keychain-preview-panel">
+          <p class="preview-label">Preview Keychain Kamu</p>
+
+          <div class="keychain-mockup" id="keychainMockup">
+            <!-- Ring + chain -->
+            <div class="kc-top">
+              <div class="kc-ring" id="kcRing"></div>
+              <div class="kc-chain" id="kcChain"></div>
+            </div>
+
+            <!-- Polaroid frame -->
+            <div class="kc-polaroid" id="kcPolaroid">
+              <!-- sticker overlay -->
+              <div class="kc-stickers" id="kcStickers" style="display:none;"></div>
+              <!-- photo -->
+              <div class="kc-photo-wrap">
+                <img id="previewPhoto" src="" alt="Foto kamu" />
+              </div>
+              <!-- polaroid label -->
+              <div class="kc-label">SnapPocket ✦</div>
+            </div>
+
+            <!-- Beads below polaroid -->
+            <div class="kc-beads" id="kcBeads" style="display:none;"></div>
+          </div>
+
+          <button class="retake-btn" onclick="retakePhoto()">↺ Foto Ulang</button>
+        </div>
+
+        <!-- ── RIGHT: Options ── -->
+        <div class="options-panel">
+          <h2 class="options-title">Pilih Paket Kamu</h2>
+
+          <!-- Product cards -->
+          <div class="product-options">
+            <div class="product-option-card active" data-product="standard" onclick="selectProduct('standard')">
+              <div class="poc-emoji">🔗</div>
+              <div class="poc-info">
+                <div class="poc-name">Standard</div>
+                <div class="poc-price">Rp26.022</div>
+                <div class="poc-desc">Case + Rantai</div>
+              </div>
+            </div>
+            <div class="product-option-card" data-product="sticker" onclick="selectProduct('sticker')">
+              <div class="poc-emoji">✨</div>
+              <div class="poc-info">
+                <div class="poc-name">+ Sticker</div>
+                <div class="poc-price">Rp27.462</div>
+                <div class="poc-desc">Case + Rantai + Stiker</div>
+              </div>
+            </div>
+            <div class="product-option-card" data-product="beads" onclick="selectProduct('beads')">
+              <div class="poc-emoji">🌈</div>
+              <div class="poc-info">
+                <div class="poc-name">+ Beads</div>
+                <div class="poc-price">Rp27.622</div>
+                <div class="poc-desc">Case + Rantai + Manik</div>
+              </div>
+            </div>
+            <div class="product-option-card" data-product="premium" onclick="selectProduct('premium')">
+              <div class="poc-emoji">👑</div>
+              <div class="poc-info">
+                <div class="poc-name">Premium</div>
+                <div class="poc-price">Rp28.000</div>
+                <div class="poc-desc">All-In: Stiker + Manik</div>
+              </div>
+              <div class="poc-badge">BEST</div>
+            </div>
+          </div>
+
+          <!-- Chain color -->
+          <div class="sub-option">
+            <div class="sub-option-title">Warna Rantai</div>
+            <div class="sub-option-btns">
+              <button class="sub-btn selected" data-chain="silver" onclick="selectChain('silver')">
+                <span class="sub-swatch" style="background:linear-gradient(135deg,#b8b8b8,#e8e8e8);"></span>
+                Silver
+              </button>
+              <button class="sub-btn" data-chain="gold" onclick="selectChain('gold')">
+                <span class="sub-swatch" style="background:linear-gradient(135deg,#c9a227,#f0d060);"></span>
+                Gold
+              </button>
+            </div>
+          </div>
+
+          <!-- Sticker theme (shown only if product has sticker) -->
+          <div class="sub-option" id="stickerOptions" style="display:none;">
+            <div class="sub-option-title">Tema Stiker</div>
+            <div class="sub-option-btns">
+              <button class="sub-btn selected" data-sticker="y2k" onclick="selectSticker('y2k')">
+                <span class="sub-icon">💫</span> Y2K
+              </button>
+              <button class="sub-btn" data-sticker="cute" onclick="selectSticker('cute')">
+                <span class="sub-icon">🌸</span> Cute
+              </button>
+            </div>
+          </div>
+
+          <!-- Beads color (shown only if product has beads) -->
+          <div class="sub-option" id="beadsOptions" style="display:none;">
+            <div class="sub-option-title">Warna Manik-manik</div>
+            <div class="sub-option-btns">
+              <button class="sub-btn selected" data-beads="colorful" onclick="selectBeads('colorful')">
+                <span class="sub-icon">🌈</span> Colorful
+              </button>
+              <button class="sub-btn" data-beads="pastel" onclick="selectBeads('pastel')">
+                <span class="sub-icon">🌸</span> Pastel
+              </button>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="options-cta">
+            <p class="options-cta-note">
+              Suka tampilan ini? Langsung pesan sekarang!
+            </p>
+            <button class="btn-primary btn-teal options-order-btn" onclick="goToOrder()">
+              Pesan Sekarang! 📦
+            </button>
+            <a href="index.html#shop" class="options-browse-link">
+              Lihat semua produk →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer style="margin-top:80px;">
+      <div class="footer-bottom">© 2026 SnapPocket — Kelompok 2 Bisnis Digital</div>
+    </footer>
+
+    <script src="demo.js"></script>
+  </body>
+</html>
