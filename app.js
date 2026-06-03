@@ -35,7 +35,7 @@ const products = [
     id: 3,
     name: "Standard + Beads",
     label: "BEAD IT YOUR WAY",
-    price: 27622,
+    price: 27000,
     desc: "Case bening + rangkaian beads warna-warni. Cantik & unik!",
     icon: "💎",
     photoBg: "#d0dff0",
