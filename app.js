@@ -9,7 +9,7 @@ const products = [
     id: 1,
     name: "Standard",
     label: "THE CLASSIC · SNAPPOCKET STARTER",
-    price: 26000,
+    price: 26022,
     desc: "Case bening + rantai minimalis. Simple, bersih, ikonik.",
     icon: "📷",
     photoBg: "#f0d8c8",
@@ -22,7 +22,7 @@ const products = [
     id: 2,
     name: "Standard + Custom Sticker",
     label: "Y2K VIBES, YOUR WAY",
-    price: 27000,
+    price: 27462,
     desc: "Case bening + sticker custom pilihan kamu. Vibes Y2K maksimal!",
     icon: "🌟",
     photoBg: "#d8e8d0",
@@ -35,7 +35,7 @@ const products = [
     id: 3,
     name: "Standard + Beads",
     label: "BEAD IT YOUR WAY",
-    price: 27000,
+    price: 27622,
     desc: "Case bening + rangkaian beads warna-warni. Cantik & unik!",
     icon: "💎",
     photoBg: "#d0dff0",
@@ -412,9 +412,11 @@ function scrollToShop() {
     ------------------------------------------------------- */
 function toggleMenu() {
   document.getElementById("mobileMenu").classList.toggle("open");
+  document.getElementById("hamburger").classList.toggle("open");
 }
 function closeMenu() {
   document.getElementById("mobileMenu").classList.remove("open");
+  document.getElementById("hamburger").classList.remove("open");
 }
 
 /* -------------------------------------------------------
