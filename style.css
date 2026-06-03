@@ -1211,6 +1211,117 @@ footer {
     gap: 20px;
   }
 }
+
+/* =========================================================
+       DEMO PROMO SECTION (index.html)
+    ========================================================= */
+.demo-promo {
+  padding: 60px 5%;
+  background: var(--dark);
+  color: #fff;
+}
+.demo-promo-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 60px;
+  align-items: center;
+}
+.demo-promo-title {
+  font-family: var(--font-head);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin: 8px 0 14px;
+}
+.demo-promo-title .accent {
+  color: var(--yellow);
+}
+.demo-promo-desc {
+  color: #bbb;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  max-width: 380px;
+}
+
+/* Decorative polaroid widget */
+.demo-promo-visual {
+  flex-shrink: 0;
+}
+.demo-promo-polaroid {
+  position: relative;
+  background: #fff;
+  border-radius: 3px;
+  padding: 12px 12px 36px;
+  width: 150px;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.35);
+  transform: rotate(4deg);
+}
+.demo-promo-photo {
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, #f4c7b0, #e8a090);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+}
+.demo-promo-chain {
+  position: absolute;
+  top: -54px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.demo-promo-ring {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 3px solid #f5c842;
+}
+.demo-promo-chainline {
+  width: 4px;
+  height: 36px;
+  background: repeating-linear-gradient(
+    to bottom,
+    #c9a227 0, #c9a227 7px,
+    #f0d060 7px, #f0d060 10px,
+    transparent 10px, transparent 13px
+  );
+  border-radius: 2px;
+}
+.demo-promo-beads {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  margin-top: 8px;
+}
+.demo-promo-beads span {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: inset 0 2px 3px rgba(255,255,255,0.4);
+}
+
+@media (max-width: 640px) {
+  .demo-promo-inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .demo-promo-visual {
+    display: none;
+  }
+}
+
+/* =========================================================
+       RESPONSIVE
+    ========================================================= */
 @media (max-width: 400px) {
   .product-grid {
     grid-template-columns: 1fr;
